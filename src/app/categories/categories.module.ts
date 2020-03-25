@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { NewCategoriesComponent } from './new-categories/new-categories.component';
@@ -12,7 +14,8 @@ import { NewCategoriesComponent } from './new-categories/new-categories.componen
     NewCategoriesComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     ListCategoriesComponent,
