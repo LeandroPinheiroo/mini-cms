@@ -17,5 +17,11 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Salvar</button> 
+    <button type="submit" class="btn btn-primary mb-2" [disabled]="f.invalid">Salvar</button> 
+    <div *ngIf="submited" #alert class="alert alert-{{ type }} alert-dismissible fade show"  role="alert">
+        <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{ message }}!</strong>.
+    </div>
 </form>
