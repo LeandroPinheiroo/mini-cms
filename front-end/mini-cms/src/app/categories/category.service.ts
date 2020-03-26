@@ -8,7 +8,7 @@ import { Category } from '../core/models';
 export class CategoryService {
 
   url: String = 'http://localhost:8000/api/v1/category';
-  constructor(public httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   save(category: Category){
     const httpOptions = {
@@ -18,8 +18,6 @@ export class CategoryService {
         },
       )
     };
-    this.httpClient.post(`${this.url}`, JSON.stringify(category) , httpOptions).subscribe((res)=>{
-        console.log(res);
-    });
-}
+    return this.httpClient.post(`${this.url}`, JSON.stringify(category) , httpOptions);
+  } 
 }

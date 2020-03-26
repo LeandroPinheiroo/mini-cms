@@ -1,3 +1,14 @@
 textarea{
     resize: none;
 }
+.invalid  {
+  border: 2px solid #D9534F; /* red */
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border: 2px solid #5cb85c; /* green */
+}
+
+.danger{
+    color: #D9534F;
+}

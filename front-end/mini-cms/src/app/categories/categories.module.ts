@@ -6,7 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { NewCategoriesComponent } from './new-categories/new-categories.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { SharedModule } from '../shared/shared.module';
+  
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule,
   ],
   exports: [
     ListCategoriesComponent,

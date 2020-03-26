@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Category } from './../../core/models';
-import { Router } from '@angular/router';
 import { CategoryService } from '../category.service';
 
 @Component({
@@ -15,7 +14,6 @@ export class NewCategoriesComponent implements OnInit {
   id: any;
 
   constructor(
-    private router: Router,
     private categoryService: CategoryService,
   ) { }
 
@@ -25,7 +23,6 @@ export class NewCategoriesComponent implements OnInit {
 
   }
   onSubmit(form){
-
     if(this.update){
       console.log("Process");
       return;
@@ -34,9 +31,23 @@ export class NewCategoriesComponent implements OnInit {
     console.log(this.category);
     
   }
-  public save() {
-    this.categoryService.save(this.category);
+  save() {
+    this.categoryService.save(this.category)
+                    .subscribe(
+                      (res) => {
+                        this.success();
+                      },
+                      (error) => { 
+                        this.error();
+                        }
+                   );
+  }
+
+  success(){
     
+  }
+  error(){
+
   }
 
 }

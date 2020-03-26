@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { CategoriesModule } from './categories/categories.module';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 //Componentes
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -25,9 +27,11 @@ import { routing } from './app-routing';
     BrowserAnimationsModule,
     HttpClientModule,
     CategoriesModule,
+    ModalModule,
     routing
   ],
   providers: [
+    
   ],
   bootstrap: [AppComponent]
 })
