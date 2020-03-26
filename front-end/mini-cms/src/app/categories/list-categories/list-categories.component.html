@@ -16,9 +16,14 @@
                 </tr>
             </thead>
             <tbody>
-               <tr>
-                   <td colspan="3" class="text-center"> Nenhuma Categoria Cadastrada</td>
-               </tr>
+                <tr *ngFor="let category of categories;">
+                    <td>{{category.id}}</td>
+                    <td>{{category.name}}</td>
+                    <td>{{category.description}}</td>
+                </tr>
+                <tr *ngIf="categories.length == 0">
+                    <td colspan="3" class="text-center"> Nenhuma Categoria Cadastrada</td>
+                </tr>
             </tbody>
         </table>
     </div>
