@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
+use App\Http\Requests\StoreCategory;
 
 class CategoryController extends Controller
 {
@@ -24,30 +25,19 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategory $request)
     {
-        $validation = Validator::make($request->all(),[ 
-            'name' => 'required',
-        ]);
+        $request->validated();
 
-        if($validation->fails()){
-            return response()->json([
-                'error' => true,
-                'messages'  => $validation->errors(),
-            ], 200);
-        }
-        else
-        {
-            $category = new Category;
-            $category->name = $request->input('name');
-            $category->description = $request->input('description');
-            $category->save();
-    
-            return response()->json([
-                'error' => false,
-                'employee'  => $employee,
-            ], 200);
-        }
+        $category = new Category;
+        $category->name = $request->input('name');
+        $category->description = $request->input('description');
+        $category->save();
+
+        return response()->json([
+            'error' => false,
+            'category'  => $category,
+        ], 200);
     }
 
     /**

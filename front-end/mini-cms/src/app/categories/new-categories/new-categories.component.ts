@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ErrorHandleService } from './../../core/error-handle.service';
 
 import { Category } from './../../core/models';
-import { FormControl } from '@angular/forms';
-import { CategoryService } from './../category.service';
 import { Router } from '@angular/router';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-new-categories',
@@ -17,9 +15,8 @@ export class NewCategoriesComponent implements OnInit {
   id: any;
 
   constructor(
-    private categoryService: CategoryService,
     private router: Router,
-    private errorHandler: ErrorHandleService,
+    private categoryService: CategoryService,
   ) { }
 
   get update() { return /*Boolean(this.id);*/ false }
@@ -34,18 +31,12 @@ export class NewCategoriesComponent implements OnInit {
       return;
     }
     this.save();
-    console.log(form);
+    console.log(this.category);
     
   }
   public save() {
-
-    return this.categoryService.save(this.category)
-              .subscribe( (data: any) => {
-                this.router.navigate(['/category']);
-              },
-              erro => {
-                this.errorHandler.handle(erro);
-              });
+    this.categoryService.save(this.category);
+    
   }
 
 }

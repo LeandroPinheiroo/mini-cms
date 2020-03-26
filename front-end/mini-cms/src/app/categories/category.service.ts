@@ -1,27 +1,25 @@
-import { Category } from './../core/models';
-
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Category } from '../core/models';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class CategoryService {
 
-    url = 'http://localhost:8000/recurso';
+  url: String = 'http://localhost:8000/api/v1/category';
+  constructor(public httpClient: HttpClient) { }
 
-    constructor(private http: HttpClient) { }
-
-    save(category: Category) {
-
-        const httpOptions = {
-          headers: new HttpHeaders({
-            'Content-Type': 'application/json'// ,
-            // 'Authorization': 'Basic cDFAZy5jb206YWRtaW4='
-            },
-          )
-        };
-        return this.http.post(`${this.url}`, JSON.stringify(category) , httpOptions);
-      }
-
+  save(category: Category){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'// ,
+        // 'Authorization': 'Basic cDFAZy5jb206YWRtaW4='
+        },
+      )
+    };
+    this.httpClient.post(`${this.url}`, JSON.stringify(category) , httpOptions).subscribe((res)=>{
+        console.log(res);
+    });
+}
 }

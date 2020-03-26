@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { NewCategoriesComponent } from './new-categories/new-categories.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -15,7 +16,8 @@ import { NewCategoriesComponent } from './new-categories/new-categories.componen
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   exports: [
     ListCategoriesComponent,
