@@ -23,6 +23,9 @@ export class NewCategoriesComponent implements OnInit {
 
   }
   onSubmit(form){
+    if(form.invalid){
+      return;
+    }
     if(this.update){
       console.log("Process");
       return;
