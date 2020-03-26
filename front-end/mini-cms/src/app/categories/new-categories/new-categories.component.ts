@@ -36,7 +36,7 @@ export class NewCategoriesComponent implements OnInit {
       return;
     }
     this.save();
-    console.log(this.category);
+    form.resetForm();
     
   }
   save() {
@@ -49,6 +49,7 @@ export class NewCategoriesComponent implements OnInit {
                         this.error();
                         }
                    );
+                   
   }
 
   success(){
