@@ -17,7 +17,8 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary mb-2" [disabled]="f.invalid">Salvar</button> 
+    <button type="submit" class="btn btn-primary mb-2 mr-2" [disabled]="f.invalid">Salvar</button> 
+    <a class="btn btn-danger mb-2" href="/categories">Cancelar</a>
     <div *ngIf="submited" #alert class="alert alert-{{ type }} alert-dismissible fade show"  role="alert">
         <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
           <span aria-hidden="true">&times;</span>

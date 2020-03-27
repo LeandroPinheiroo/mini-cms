@@ -29,17 +29,13 @@ export class ListCategoriesComponent implements OnInit {
                         this.categories = res.categories;
                       },
                       (error) => { 
-                        this.error();
+                        console.error(error);
                         }
                    );
   }
-
-  success(){
-
+  confirmDestroy(category){
+    console.log(category);
   }
-  
-  error(){
-    
-  }
+
 
 }

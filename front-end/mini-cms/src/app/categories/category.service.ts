@@ -22,6 +22,19 @@ export class CategoryService {
     return this.httpClient.get(`${this.url}`, httpOptions);
   }
 
+  getId(id){
+    if(id != null && id > 0){
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'// ,
+          // 'Authorization': 'Basic cDFAZy5jb206YWRtaW4='
+          },
+        )
+      };
+      return this.httpClient.get(`${this.url+'/'+id}`, httpOptions);
+    }
+  }
+
   save(category: Category){
     const httpOptions = {
       headers: new HttpHeaders({
@@ -32,4 +45,15 @@ export class CategoryService {
     };
     return this.httpClient.post(`${this.url}`, JSON.stringify(category) , httpOptions);
   } 
+  update(category: Category,id:number){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'// ,
+        // 'Authorization': 'Basic cDFAZy5jb206YWRtaW4='
+        },
+      )
+    };
+    return this.httpClient.put(`${this.url+'/'+id}`, JSON.stringify(category) , httpOptions);
+  } 
+  
 }

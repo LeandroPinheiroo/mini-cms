@@ -9,6 +9,7 @@ const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'categories', component: ListCategoriesComponent },
     { path: 'categories/new', component: NewCategoriesComponent },
+    { path: 'categories/edit/:id', component: NewCategoriesComponent },
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

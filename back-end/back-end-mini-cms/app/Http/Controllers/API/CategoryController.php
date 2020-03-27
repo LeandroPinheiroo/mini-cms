@@ -53,7 +53,14 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        if($id != null && $id > 0){
+            $category = Category::findOrFail($id);
+            return response()->json([
+                'error' => false,
+                'category'  => $category,
+            ], 200);
+        }
+        
     }
 
     /**
@@ -63,9 +70,19 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreCategory $request, $id)
     {
-        //
+        $request->validated();
+
+        $category = Category::findOrFail($id);
+        $category->name = $request->input('name');
+        $category->description = $request->input('description');
+        $category->update();
+
+        return response()->json([
+            'error' => false,
+            'category'  => $category,
+        ], 200);
     }
 
     /**
