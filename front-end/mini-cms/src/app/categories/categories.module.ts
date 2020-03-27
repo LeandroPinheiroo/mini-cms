@@ -6,9 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { NewCategoriesComponent } from './new-categories/new-categories.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from '../shared/shared.module';
   
-
 
 @NgModule({
   declarations: [
@@ -19,7 +17,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     FormsModule,
     HttpClientModule,
-    SharedModule,
+  
   ],
   exports: [
     ListCategoriesComponent,
