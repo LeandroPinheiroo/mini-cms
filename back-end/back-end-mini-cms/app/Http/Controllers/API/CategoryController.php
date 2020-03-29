@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Category;
+use App\Repositories\CategoryRepository;
 use App\Http\Requests\StoreCategory;
 
 class CategoryController extends Controller
@@ -13,10 +13,18 @@ class CategoryController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+    */
+    protected $categoryRepository;
+
+    public function __construct(CategoryRepository $categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
+
     public function index()
     {
-        $categories = Category::all();
+
+        $categories = $this->categoryRepository->getAll();
 
         return response()->json([
             'error' => false,
@@ -34,10 +42,9 @@ class CategoryController extends Controller
     {
         $request->validated();
 
-        $category = new Category;
-        $category->name = $request->input('name');
-        $category->description = $request->input('description');
-        $category->save();
+        $category = $this->categoryRepository->create(
+            $request->except(['_token'])
+        );
 
         return response()->json([
             'error' => false,
@@ -54,7 +61,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         if($id != null && $id > 0){
-            $category = Category::findOrFail($id);
+            $category = $this->categoryRepository->get($id);
             return response()->json([
                 'error' => false,
                 'category'  => $category,
@@ -74,10 +81,10 @@ class CategoryController extends Controller
     {
         $request->validated();
 
-        $category = Category::findOrFail($id);
-        $category->name = $request->input('name');
-        $category->description = $request->input('description');
-        $category->update();
+        $category = $this->categoryRepository->update(
+            $request->except(['_token']),
+            $id
+        );
 
         return response()->json([
             'error' => false,
@@ -93,6 +100,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = $this->categoryRepository->delete($id);
+        return $category;
     }
 }
