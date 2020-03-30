@@ -23,11 +23,11 @@
                     <td>{{category.description}}</td>
                     <td class="box">
                         <a class="btn btn-primary mr-2" href="/categories/edit/{{category.id}}">Editar</a>
-                        <button class="btn btn-danger" (click)="confirmDestroy(category)"> Apagar </button>
+                        <button class="btn btn-danger" (click)="destroy(category)"> Apagar </button>
                     </td>
                 </tr>
                 <tr *ngIf="categories?.length == 0">
-                    <td colspan="3" class="text-center"> Nenhuma Categoria Cadastrada</td>
+                    <td colspan="4" class="text-center"> Nenhuma Categoria Cadastrada</td>
                 </tr>
             </tbody>
         </table>

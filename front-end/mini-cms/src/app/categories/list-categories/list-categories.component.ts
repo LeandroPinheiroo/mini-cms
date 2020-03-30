@@ -24,18 +24,23 @@ export class ListCategoriesComponent implements OnInit {
   getAll(){
 
     this.categoryService.getAll()
-                    .subscribe(
-                      (res:any) => {
-                        this.categories = res.categories;
-                      },
-                      (error) => { 
-                        console.error(error);
-                        }
-                   );
+                        .subscribe(
+                          (res:any) => {
+                            this.categories = res.categories;
+                          },
+                          (error) => { 
+                            console.error(error);
+                            }
+                        );
   }
-  confirmDestroy(category){
-    console.log(category);
+  destroy(category){
+    this.categoryService.destroy(category.id)
+                        .subscribe((res: any) => {
+                          this.getAll();                          
+                        },
+                          (error)  => { console.error(error); }
+                        );
   }
-
+  
 
 }
