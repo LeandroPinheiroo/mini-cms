@@ -38,5 +38,10 @@ export class CategoryService {
       return this.httpClient.put(`${this.url+'/'+id}`, JSON.stringify(category) , this.httpOptions);
     }
   } 
+  destroy(id:number){
+    if(id != null && id > 0){
+      return this.httpClient.delete(`${this.url+'/'+id}`, this.httpOptions);
+    }
+  } 
   
 }
