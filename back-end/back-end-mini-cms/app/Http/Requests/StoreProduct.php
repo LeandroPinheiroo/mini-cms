@@ -25,8 +25,8 @@ class StoreProduct extends FormRequest
     {
         return [
             'name' => 'required',
-            'price' => 'required|number|min:0',
-            'stock' => 'required|number|min:0',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|numeric|min:0',
 
         ];
     }
@@ -38,10 +38,11 @@ class StoreProduct extends FormRequest
             'name.required' => 'O nome é obrigatório',
             //messages of price
             'price.required' => 'O preço é obrigatório',
-            'price.number' => 'O preço deve ser numérico',
+            'price.numeric' => 'O preço deve ser numérico',
             'price.min' => 'O preço deve ser no mínimo 0',
             //messages of stock
             'stock.required' => 'O estoque é obrigatório',
+            'stock.numeric' => 'O estoque é obrigatório',
             'stock.min' => 'O estoque deve ser no mínimo 0',
         ];
     }
