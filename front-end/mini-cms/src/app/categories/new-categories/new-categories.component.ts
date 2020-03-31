@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Category } from './../../core/models';
 import { CategoryService } from '../category.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoriesModule } from '../categories.module';
 
 @Component({
   selector: 'app-new-categories',

@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { routing } from './app-routing';
+import { ProductsModule } from './products/products.module';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { routing } from './app-routing';
     BrowserAnimationsModule,
     HttpClientModule,
     CategoriesModule,
+    ProductsModule,
     ModalModule,
     routing
   ],
