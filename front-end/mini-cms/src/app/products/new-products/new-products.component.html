@@ -10,7 +10,7 @@
     </div>
     <div class="form-group">
         <label for="price">Preço do Produto</label>
-        <input type="number" [className]="price.invalid && (price.dirty || price.touched) ? 'form-control invalid': 'form-control'"  id="price" name="price" ngModel #price="ngModel" [(ngModel)]="product.price" required >
+        <input currencyMask  [className]="price.invalid && (price.dirty || price.touched) ? 'form-control invalid': 'form-control'"  id="price" name="price" ngModel #price="ngModel" [(ngModel)]="product.price" required >
         <div *ngIf="price.invalid && (price.dirty || price.touched)" class="danger">
             <div *ngIf="price.errors.required">
                 Preço é obrigatório.
@@ -19,13 +19,14 @@
     </div>
     <div class="form-group">
         <label for="stock">Estoque Produto</label>
-        <input type="number" [className]="stock.invalid && (stock.dirty || stock.touched) ? 'form-control invalid': 'form-control'"  id="stock" name="stock" ngModel #stock="ngModel" [(ngModel)]="product.stock" required >
+        <input type="number" [className]="stock.invalid && (stock.dirty || stock.touched) ? 'form-control invalid': 'form-control'"  id="stock" name="stock" ngModel #stock="ngModel" [(ngModel)]="product.stock"  required >
         <div *ngIf="stock.invalid && (stock.dirty || stock.touched)" class="danger">
             <div *ngIf="stock.errors.required">
                 Estoque é obrigatório.
             </div>
         </div>
     </div>
+
     <div class="form-group">
         <label for="description">Descrição</label>
         <textarea [className]="description.invalid && (description.dirty || description.touched) ? 'form-control invalid': 'form-control'" id="description" name="description" rows="3" ngModel #description="ngModel" [(ngModel)]="product.description" required></textarea>
@@ -36,12 +37,17 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="exampleFormControlSelect1">Example select</label>
+        <label for="exampleFormControlSelect1">Categoria</label>
         <select class="form-control" [className]="category_id.invalid && (category_id.dirty || category_id.touched) ? 'form-control invalid': 'form-control'"  id="category_id" name="category_id" ngModel #category_id="ngModel" [(ngModel)]="product.category_id" required>
-          <option *ngFor="let category of categories;" [value]="category.id">{{category.name}}</option>
+            <option *ngFor="let category of categories;" [value]="category.id">{{category.name}}</option>
         </select>
-      </div>
-    <button type="submit" class="btn btn-primary mb-2 mr-2" [disabled]="f.invalid">Salvar</button> 
+    </div>
+    <div *ngIf="category_id.invalid && (category_id.dirty || category_id.touched)" class="danger">
+        <div *ngIf="category_id.errors.required">
+            Descrição é obrigatória.
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mb-2 mr-2" >Salvar</button> 
     <a class="btn btn-danger mb-2" href="/products">Cancelar</a>
     <div *ngIf="submited" #alert class="alert alert-{{ type }} alert-dismissible fade show"  role="alert">
         <button type="button" class="close" aria-label="Close" (click)="closeAlert()">

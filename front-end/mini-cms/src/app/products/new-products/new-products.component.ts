@@ -61,7 +61,6 @@ export class NewProductsComponent implements OnInit {
    );
  }
   onSubmit(form){
-    console.log(this.product);
     if(form.invalid){
       return;
     }
