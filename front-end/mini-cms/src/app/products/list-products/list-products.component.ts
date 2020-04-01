@@ -33,6 +33,12 @@ export class ListProductsComponent implements OnInit {
   }
 
   destroy(product:Product){
+    this.productService.destroy(product.id)
+                        .subscribe((res: any) => {
+                          this.getAll();                          
+                        },
+                          (error)  => { console.error(error); }
+                        );
   }
 
 }
