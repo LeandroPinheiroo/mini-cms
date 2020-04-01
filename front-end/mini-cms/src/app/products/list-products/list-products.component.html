@@ -22,7 +22,7 @@
                 <tr *ngFor="let product of products;">
                     <td>{{product.id}}</td>
                     <td>{{product.name}}</td>
-                    <td>{{product.price}}</td>
+                    <td>{{product.price | currency:"BRL":"symbol"}}</td>
                     <td>{{product.stock}}</td>
                     <td>{{product.description}}</td>
                     <td class="box">
