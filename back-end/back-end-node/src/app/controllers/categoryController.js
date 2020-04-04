@@ -14,7 +14,7 @@ exports.create = (req, res) => {
                 message:
                   err.message || "Some error occurred while creating the category."
               });
-            else res.send(data);
+            else res.send({'category':data});
         });
 
     }catch(err){
@@ -33,7 +33,9 @@ exports.getAll = (req, res) => {
             message:
               err.message || "Some error occurred while get all the category."
           });
-        else res.send(data);
+        else {
+          res.send({'categories':data});
+        }
     });
 };
 
@@ -45,7 +47,7 @@ exports.get = (req, res) => {
             message:
               err.message || "Some error occurred while get the category."
           });
-        else res.send(data);
+        else res.send({'category':data});
     });
 };
 
@@ -65,7 +67,7 @@ exports.update = (req, res) => {
                         message: "Error updating Category with id " + req.params.categoryID
                     });
                     }
-                } else res.send(data);
+                } else res.send({'category':data});
             }
         );
     }catch(err){
