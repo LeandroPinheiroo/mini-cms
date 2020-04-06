@@ -1,4 +1,4 @@
-const Category = require("../models/category.js");
+const Category = require("../models/category.model.js");
 
 exports.create = (req,result) => {
     const category = new Category({
