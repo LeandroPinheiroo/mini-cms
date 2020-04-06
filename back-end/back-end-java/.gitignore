@@ -29,3 +29,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Eclipse ###
+.cache-main
+.scala_dependencies
+.worksheet
