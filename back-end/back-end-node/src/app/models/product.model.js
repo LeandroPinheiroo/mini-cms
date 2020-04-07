@@ -6,6 +6,7 @@ const Product = function(product) {
   this.stock = product.stock;
   this.price = product.price;
   this.description = product.description;
+  this.category_id = product.category_id;
 };
 
 Product.create = (newProduct, result) => {
@@ -47,8 +48,8 @@ Product.getAll = result  => {
 
 Product.update = (id, product, result) => {
   sql.query(
-    "UPDATE products SET name = ?, stock = ?, price = ?, description = ? WHERE id = ?",
-    [product.name, product.stock, product.price, product.description, id],
+    "UPDATE products SET name = ?, stock = ?, price = ?, description = ?, category_id = ? WHERE id = ?",
+    [product.name, product.stock, product.price, product.description, product.category_id, id],
     (err, res) => {
       if (err) {
         result(null, err);
