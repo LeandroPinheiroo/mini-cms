@@ -5,7 +5,8 @@ exports.create = (req,result) => {
         name: req.body.name,
         stock: req.body.stock,
         price: req.body.price,
-        description: req.body.description
+        description: req.body.description,
+        category_id: req.body.category_id
     });
     Product.create(product, (err, data) => {
         if (err){
