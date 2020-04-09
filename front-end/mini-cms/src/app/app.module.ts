@@ -1,40 +1,37 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
-//Modules
-import { CategoriesModule } from './categories/categories.module';
-import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ModalModule } from 'ngx-bootstrap/modal';
+import { RouterModule } from '@angular/router';
+import { ToastrModule } from "ngx-toastr";
 
-//Componentes
+import { SidebarModule } from './sidebar/sidebar.module';
+import { CategoriesModule } from './pages/categories/categories.module';
+import { ProductsModule } from './pages/products/products.module';
+import { NavbarModule} from './shared/navbar/navbar.module';
+
+
 import { AppComponent } from './app.component';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { HomeComponent } from './home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { AppRoutes } from './app.routing';
 
-import { routing } from './app-routing';
-import { ProductsModule } from './products/products.module';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
-    HomeComponent,
+    AdminLayoutComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
+    RouterModule.forRoot(AppRoutes,{
+      useHash: true
+    }),
+    SidebarModule,
+    ToastrModule.forRoot(),
     CategoriesModule,
     ProductsModule,
-    ModalModule,
-    routing
+    NavbarModule
   ],
-  providers: [
-    
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
